@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kató Akwete</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#432820',
+                            hover: '#331e18'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { 
+            font-family: 'Playfair Display', serif; 
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .text-brand { color: #432820; }
+        .bg-brand { background-color: #432820; }
+    </style>
+</head>
+<body class="bg-white relative min-h-screen w-full overflow-hidden flex flex-col">
+    
+    <!-- Header -->
+    <div class="bg-brand w-full h-[100px] md:h-[120px] px-8 md:px-16 z-40 relative flex items-center">
+        <h1 class="text-white text-5xl md:text-7xl italic font-bold tracking-wide">Kató</h1>
+    </div>
+
+    <!-- Left Person -->
+    <!-- Anchored to the header bottom so she reaches it but doesn't cover it -->
+    <img src="./Picture1.png" alt="Person in blue Akwete robe" class="absolute top-[100px] md:top-[120px] left-[-15%] md:left-[-5%] w-[60%] md:w-[45%] lg:w-[38%] object-contain object-left-top z-[25] pointer-events-none">
+    
+    <!-- Right Mannequin (iop.png) -->
+    <img src="./iop.png" alt="Mannequin in purple Akwete" class="absolute top-[100px] md:top-[120px] right-[-15%] md:right-[-5%] w-[60%] md:w-[45%] lg:w-[38%] object-contain object-right-top z-[5] pointer-events-none">
+
+    <!-- Main Hero Area -->
+    <div class="relative flex-grow w-full flex flex-col justify-between pt-6 md:pt-10 z-10">
+        
+        <!-- Center Text Content -->
+        <!-- Responsive padding ensures text fits on mobile while staying squeezed on desktop -->
+        <div class="relative z-50 flex flex-col items-center w-full px-[5%] md:px-[15%] lg:px-[25%] mx-auto mt-4 md:mt-0">
+            <h2 class="text-brand text-[20vw] md:text-[180px] lg:text-[200px] font-black leading-none tracking-wide mb-2 text-center whitespace-nowrap">AKWETE</h2>
+            <p class="text-brand text-[7vw] md:text-[55px] lg:text-[60px] font-bold italic mb-6 md:mb-10 text-center leading-tight">
+                Woven in Eastern Nigeria, Shipped to your Doorstep
+            </p>
+        </div>
+        
+        <!-- Fabrics Area -->
+        <div class="relative w-full max-w-[1600px] mx-auto flex justify-center items-end mt-auto">
+            <!-- Red Swatch (Left) -->
+            <img src="./Picture2.png" alt="Red Akwete fabric" class="w-[50%] object-contain relative z-10">
+            
+            <!-- Teal Swatch (Center) - Taller and overlapping -->
+            <img src="./Picture3.png" alt="Teal Akwete fabric" class="w-[48%] object-contain relative z-20 -ml-[18%] -mr-[18%] mb-[4%]">
+            
+            <!-- Brown Swatch (Right) -->
+            <img src="./Picture4.png" alt="Brown Akwete fabric" class="w-[42%] object-contain relative z-10">
+            
+        </div>
+    </div>
+
+    <!-- Global Bottom White Border -->
+    <!-- Covers the bottom of ALL images (models and fabrics) -->
+    <div class="absolute bottom-0 left-0 w-full h-[250px] md:h-[350px] bg-white z-[60]"></div>
+    
+    <!-- Global Button -->
+    <!-- Positioned exactly in the middle of the global white border -->
+    <a href="waitlist.html" class="absolute bottom-[125px] md:bottom-[175px] left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-brand text-white px-10 md:px-16 py-4 md:py-6 text-xl md:text-3xl font-bold text-center leading-tight hover:bg-brand-hover transition-colors whitespace-nowrap z-[70] shadow-xl">
+        Click here for more<br>information
+    </a>
+</body>
+</html>
+

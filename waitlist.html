@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kató Waitlist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#3b231c',
+                            hover: '#2a1813',
+                            input: '#e3c6a4',
+                            card: '#f4f1e1'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Playfair Display', serif; }
+        .bg-pattern {
+            background-image: url('./iop.png');
+            background-color: #1a3c40;
+            background-blend-mode: overlay;
+            background-size: cover;
+            background-position: center;
+        }
+        .card-border {
+            border: 4px solid transparent;
+            border-image: url('https://www.transparenttextures.com/patterns/woven-light.png') 30 stretch;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-pattern flex items-center justify-center p-4 relative">
+    <!-- Dark overlay -->
+    <div class="absolute inset-0 bg-black/20"></div>
+
+    <div class="bg-brand-card p-8 md:p-12 max-w-md w-full shadow-2xl relative z-10 rounded-sm card-border">
+        <!-- Back Button -->
+        <a href="index.html" class="absolute top-4 left-4 text-brand-dark hover:text-brand-hover flex items-center gap-1 text-sm font-bold transition-colors">
+            &larr; Back to Home
+        </a>
+        
+        <div class="text-center mb-8 mt-4">
+            <h1 class="text-5xl italic text-brand-dark mb-4">Kató</h1>
+            <h2 class="text-2xl italic text-brand-dark">Waitlist Interest Form</h2>
+        </div>
+        
+        <div id="success-message" class="hidden text-center py-8 space-y-4">
+            <h3 class="text-2xl text-brand-dark">Thank you!</h3>
+            <p class="text-brand-dark">Your interest has been recorded. We will be in touch soon.</p>
+            <p class="text-sm text-brand-dark/70 italic">Redirecting to home...</p>
+        </div>
+
+        <form id="waitlist-form" class="space-y-6">
+            <div>
+                <label class="block text-brand-dark text-lg mb-2">Full Name</label>
+                <input required type="text" id="name" class="w-full bg-brand-input border border-brand-dark rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-dark text-brand-dark">
+            </div>
+            <div>
+                <label class="block text-brand-dark text-lg mb-2">Email Address</label>
+                <input required type="email" id="email" class="w-full bg-brand-input border border-brand-dark rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-dark text-brand-dark">
+            </div>
+            <button type="submit" class="w-full bg-brand-dark text-white py-4 text-xl hover:bg-brand-hover transition-colors rounded-md mt-4 shadow-md">
+                Submit My Interest
+            </button>
+        </form>
+        
+        <p class="text-center text-brand-dark mt-8 italic">We value your interest and privacy.</p>
+    </div>
+
+    <script>
+        document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            
+            // Save to localStorage
+            const existingData = JSON.parse(localStorage.getItem('kato_waitlist') || '[]');
+            existingData.push({ name, email, date: new Date().toISOString() });
+            localStorage.setItem('kato_waitlist', JSON.stringify(existingData));
+            
+            // Show success message
+            document.getElementById('waitlist-form').classList.add('hidden');
+            document.getElementById('success-message').classList.remove('hidden');
+            
+            // Redirect after 3 seconds
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
