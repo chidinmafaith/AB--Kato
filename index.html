@@ -46,52 +46,57 @@
 <body class="bg-white relative min-h-screen w-full overflow-hidden flex flex-col">
     
     <!-- Header -->
-    <div class="bg-brand w-full h-[100px] md:h-[120px] px-8 md:px-16 z-40 relative flex items-center">
-        <h1 class="text-white text-5xl md:text-7xl italic font-bold tracking-wide">Kató</h1>
+    <div class="bg-brand w-full h-[100px] lg:h-[130px] px-8 md:px-16 z-[40] relative flex items-center shrink-0">
+        <h1 class="text-white text-5xl md:text-7xl lg:text-8xl italic font-bold tracking-wider" style="font-family: inherit;">Kató</h1>
     </div>
 
-    <!-- Left Person -->
-    <!-- Anchored to the header bottom so she reaches it but doesn't cover it -->
-    <img src="./Picture1.png" alt="Person in blue Akwete robe" class="absolute top-[100px] md:top-[120px] left-[-15%] md:left-[-5%] w-[60%] md:w-[45%] lg:w-[38%] object-contain object-left-top z-[25] pointer-events-none">
-    
-    <!-- Right Mannequin (iop.png) -->
-    <img src="./iop.png" alt="Mannequin in purple Akwete" class="absolute top-[100px] md:top-[120px] right-[-15%] md:right-[-5%] w-[60%] md:w-[45%] lg:w-[38%] object-contain object-right-top z-[5] pointer-events-none">
-
-    <!-- Main Hero Area -->
-    <div class="relative flex-grow w-full flex flex-col justify-between pt-6 md:pt-10 z-10">
+    <!-- Main Display Area -->
+    <!-- Removed max-w limit so the content can spread infinitely to literal screen edges -->
+    <div class="relative flex-grow w-full z-[10]">
         
-        <!-- Center Text Content -->
-        <!-- Responsive padding ensures text fits on mobile while staying squeezed on desktop -->
-        <div class="relative z-50 flex flex-col items-center w-full px-[5%] md:px-[15%] lg:px-[25%] mx-auto mt-4 md:mt-0">
-            <h2 class="text-brand text-[20vw] md:text-[180px] lg:text-[200px] font-black leading-none tracking-wide mb-2 text-center whitespace-nowrap">AKWETE</h2>
-            <p class="text-brand text-[7vw] md:text-[55px] lg:text-[60px] font-bold italic mb-6 md:mb-10 text-center leading-tight">
+        <!-- Center Text -->
+        <!-- Shifted deeply downward on mobile (top-[22%]) to fill the vertical blank space, strictly locked backwards to top-[2%] on md to preserve tablet/desktop perfectly -->
+        <div class="absolute top-[22%] md:top-[12%] lg:top-[3%] left-0 right-0 w-full z-[80] flex flex-col items-center justify-start pointer-events-none mx-auto shrink-0 transition-all">
+            <h2 class="text-brand text-[20vw] md:text-[140px] lg:text-[280px] xl:text-[320px] font-black leading-[0.75] tracking-wider uppercase m-0 p-0 text-center" style="font-family: inherit;">AKWETE</h2>
+            <p class="text-brand text-[4.5vw] md:text-[24px] lg:text-[48px] xl:text-[54px] font-bold italic mt-2 lg:mt-4 leading-tight text-center px-4">
                 Woven in Eastern Nigeria, Shipped to your Doorstep
             </p>
         </div>
-        
-        <!-- Fabrics Area -->
-        <div class="relative w-full max-w-[1600px] mx-auto flex justify-center items-end mt-auto">
-            <!-- Red Swatch (Left) -->
-            <img src="./Picture2.png" alt="Red Akwete fabric" class="w-[50%] object-contain relative z-10">
+
+        <!-- Fabrics Container -->
+        <!-- Lifted up to show much more fabric, increased height massively to dominate the middle page, while keeping bottom slightly bitten relative to the border -->
+        <div class="absolute bottom-[90px] md:bottom-[160px] lg:bottom-[200px] left-1/2 transform -translate-x-1/2 w-[70%] md:w-[42%] lg:w-[50%] xl:w-[48%] h-[25vh] md:h-[35vh] lg:h-[48vh] flex justify-center items-end z-[20]">
+            <!-- Picture 2 (likely Blue/Teal) -->
+            <!-- Raised slightly per user request -->
+            <img src="./Picture2.png" alt="Akwete fabric" class="shrink-0 w-[55%] lg:w-[65%] h-full object-cover object-top relative z-[10] -mr-[25%] lg:-mr-[30%] transform -translate-y-4 md:-translate-y-8 lg:-translate-y-12 drop-shadow-2xl">
             
-            <!-- Teal Swatch (Center) - Taller and overlapping -->
-            <img src="./Picture3.png" alt="Teal Akwete fabric" class="w-[48%] object-contain relative z-20 -ml-[18%] -mr-[18%] mb-[4%]">
+            <!-- Picture 3 (Middle Red) -->
+            <!-- Raised slightly per user request -->
+            <img src="./Picture3.png" alt="Akwete fabric" class="shrink-0 w-[65%] lg:w-[80%] h-full object-cover object-top relative z-[20] transform -translate-y-4 md:-translate-y-8 lg:-translate-y-12 drop-shadow-[0_15px_30px_rgba(0,0,0,0.5)]">
             
-            <!-- Brown Swatch (Right) -->
-            <img src="./Picture4.png" alt="Brown Akwete fabric" class="w-[42%] object-contain relative z-10">
-            
+            <!-- Picture 4 (Brown/Other) -->
+            <img src="./Picture4.png" alt="Akwete fabric" class="shrink-0 w-[55%] lg:w-[65%] h-full object-cover object-top relative z-[10] -ml-[25%] lg:-ml-[30%] drop-shadow-2xl">
         </div>
+
+        <!-- Couple image (Left) -->
+        <!-- Hidden completely on phone view (base class), strictly restored on md: and upwards -->
+        <img src="./couple.png" alt="Couple in Akwete robe" class="hidden md:block absolute bottom-[10px] md:bottom-[160px] lg:bottom-[40px] left-0 h-[60vh] md:h-[75vh] lg:h-[88vh] xl:h-[95vh] w-auto max-w-[38vw] md:max-w-[38vw] lg:max-w-[40vw] object-contain object-left-bottom z-[50] pointer-events-none drop-shadow-2xl">
+        
+        <!-- Lady image (Right) -->
+        <!-- Scaled to maximum vertical (95vh) on mobile so she reaches the absolute top of the page. Increased max-w to 75vw so her width doesn't choke the height. -->
+        <img src="./lady.png" alt="Woman in blue Akwete" class="absolute bottom-[10px] md:bottom-[160px] lg:bottom-[40px] right-0 h-[95vh] md:h-[75vh] lg:h-[88vh] xl:h-[95vh] w-auto max-w-[75vw] md:max-w-[38vw] lg:max-w-[40vw] object-contain object-right-bottom z-[50] pointer-events-none drop-shadow-2xl">
+
     </div>
 
-    <!-- Global Bottom White Border -->
-    <!-- Covers the bottom of ALL images (models and fabrics) -->
-    <div class="absolute bottom-0 left-0 w-full h-[250px] md:h-[350px] bg-white z-[60]"></div>
-    
+    <!-- Solid White Border -->
+    <!-- Set slightly taller than the fabrics bottom (200px vs 250px) to bite off exactly ~1-2 inches of the newly raised fabrics uniformly. -->
+    <div class="absolute bottom-0 left-0 right-0 w-full h-[120px] md:h-[280px] lg:h-[250px] bg-white z-[60]"></div>
+
     <!-- Global Button -->
-    <!-- Positioned exactly in the middle of the global white border -->
-    <a href="waitlist.html" class="absolute bottom-[125px] md:bottom-[175px] left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-brand text-white px-10 md:px-16 py-4 md:py-6 text-xl md:text-3xl font-bold text-center leading-tight hover:bg-brand-hover transition-colors whitespace-nowrap z-[70] shadow-xl">
+    <a href="waitlist.html" class="absolute bottom-[15px] md:bottom-[80px] lg:bottom-[55px] left-1/2 transform -translate-x-1/2 bg-brand text-white px-6 md:px-12 lg:px-24 py-3 md:py-5 lg:py-6 text-sm md:text-2xl lg:text-4xl font-bold text-center leading-tight hover:bg-[#2d1b15] transition-colors whitespace-nowrap z-[70] flex items-center justify-center pointer-events-auto shadow-2xl">
         Click here for more<br>information
     </a>
+
 </body>
 </html>
 
